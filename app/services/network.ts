@@ -14,9 +14,6 @@ export class Network {
     public async get<T>(url: string, headers = DEFAULT_HEADERS): Promise<T> {
         const fullUrl = `${SERVER_BASE_URL}${url}`;
         const response = await fetch(fullUrl, { headers, credentials: "include" });
-        // if (response.status === 401) {
-        //     localStorage.clear();
-        // }
         return response.json();
     }
 
@@ -32,9 +29,6 @@ export class Network {
             body: JSON.stringify(body),
             credentials: "include"
         });
-        // if (response.status === 401) {
-        //     localStorage.clear();
-        // }
         return response.json();
     }
 
@@ -50,9 +44,6 @@ export class Network {
             body: JSON.stringify(body),
             credentials: "include"
         });
-        // if (response.status === 401) {
-        //     localStorage.clear();
-        // }
         return response.json();
     }
 
@@ -62,9 +53,6 @@ export class Network {
             method: "DELETE", headers,
             credentials: "include"
         });
-        // if (response.status === 401) {
-        //     localStorage.clear();
-        // }
         return response.json();
     }
 

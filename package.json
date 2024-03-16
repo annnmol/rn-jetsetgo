@@ -15,7 +15,8 @@
     "expo-system-ui": "~2.9.3",
     "react": "18.2.0",
     "react-native": "0.73.5",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "@expo/vector-icons": "^14.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
