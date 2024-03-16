@@ -51,7 +51,7 @@ const AppButton: React.FC<Props> = ({
         style={[styles.textButton, style && style]}
         {...otherProps}
       >
-        <AppText style={[styles.text, {textDecorationLine: 'underline'},textStyle]} variant={textVariant}>
+        <AppText style={[ {textDecorationLine: 'underline'},textStyle]} variant={textVariant}>
           {children}
         </AppText>
       </TouchableOpacity>
@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
     color: "rgba(255,255,255,0.9)",
   },
   textOutline: {
-    color: THEME.ACCENT
+    color: THEME.PRIMARY
   },
 
   primaryButton: {
     backgroundColor: THEME.PRIMARY,
     width: "100%",
     height: 44,
-    borderRadius: 8,
+    borderRadius: 24,
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
@@ -96,11 +96,12 @@ const styles = StyleSheet.create({
 
   //*outline
   outlineButton: {
-    borderColor: THEME.ACCENT,
-    borderWidth: 1,
+    borderColor: THEME.PRIMARY,
+    backgroundColor: THEME.WHITE,
+    borderWidth: 2,
     width: "100%",
     height: 44,
-    borderRadius: 8,
+    borderRadius: 24,
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     height: 44,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 8,
+    borderRadius: 24,
     textAlign: "center",
   },
 });

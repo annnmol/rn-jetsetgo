@@ -7,12 +7,15 @@ export const THEME = {
     WHITE: "#FFFFFF",
     BLACK: "#000000",
     GRAY: "#BDBDBD",
-    LIGHT_GRAY: "#F5F5F5",
+    LIGHT_GRAY: "#Fff",
     DARK_GRAY: "#333333",
     DANGER: "#FF0000",
     SUCCESS: "#00FF00",
     WARNING: "#FFA500",
     INFO: "#ADD8E6",
+    TEXT: "rgba(0,0,0,0.87)",
+    TEXT_LIGHT: "rgba(0,0,0,0.45)",
+    TEXT_MEDIUM: "rgba(0,0,0,0.7)",
 }
 
 
@@ -23,22 +26,22 @@ export const TYPOGRAPHY: any = {
         letterSpacing: 1,
     },
     h2: {
-        fontWeight: "500",
+        fontWeight: "600",
         fontSize: 28,
         letterSpacing: 1,
     },
     h3: {
-        fontWeight: "500",
+        fontWeight: "600",
         fontSize: 24,
         letterSpacing: 1,
     },
     h4: {
-        fontWeight: "500",
+        fontWeight: "600",
         fontSize: 20,
         letterSpacing: 1,
     },
     h5: {
-        fontWeight: "500",
+        fontWeight: "600",
         fontSize: 17,
         letterSpacing: 1,
     },

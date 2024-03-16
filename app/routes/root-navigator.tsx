@@ -3,11 +3,13 @@ import { NavigationContainer } from "@react-navigation/native";
 
 //user defined components
 import BottomTabsNavigator from "./bottom-tabs-navigator";
+import AuthNavigator from "./auth-navigator";
 
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-     <BottomTabsNavigator />
+      {/* <BottomTabsNavigator /> */}
+      <AuthNavigator />
     </NavigationContainer>
   );
 };

@@ -42,6 +42,20 @@ const HomeScreen = ({navigation}:Props) => {
       >
         Search
       </AppButton>
+      <AppButton
+        onPress={() => handleSearchFlights()}
+        textVariant="button2"
+        variant="outline"
+      >
+        Search
+      </AppButton>
+      <AppButton
+        onPress={() => handleSearchFlights()}
+        textVariant="button2"
+        variant="text"
+      >
+        Search
+      </AppButton>
     </View>
   );
 };
@@ -53,6 +67,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: globalStyles.appScreen.backgroundColor,
+    // backgroundColor: The,
   },
 });

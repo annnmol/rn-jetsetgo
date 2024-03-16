@@ -14,11 +14,16 @@ const globalStyles = StyleSheet.create({
     borderColor: THEME.DANGER,
     borderWidth: 2,
   },
-  appScreen: {
+  container: {
     paddingVertical: CONSTANTS.spacingM,
     paddingHorizontal: CONSTANTS.spacing,
-    backgroundColor: THEME.GRAY,
     flex: 1,
+  },
+  divider: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "rgba(255,255,255,0.2)",
+    marginVertical: 1,
   },
 });
 
