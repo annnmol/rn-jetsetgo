@@ -11,7 +11,7 @@ interface Props {
   Icon:
     | "email-outline"
     | "form-textbox-password"
-    | "card-account-details-outline";
+    | "card-account-details-outline" | "skull-scan-outline";
 }
 
 const AuthFormHeader = ({ Icon, title, subTitle }: Props) => {

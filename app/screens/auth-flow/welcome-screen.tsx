@@ -112,6 +112,8 @@ const styles = StyleSheet.create({
     marginTop: CONSTANTS.spacingLXX,
   },
   infoBox: {
+    borderTopEndRadius:CONSTANTS.spacingLX,
+    borderTopStartRadius:CONSTANTS.spacingLX,
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",

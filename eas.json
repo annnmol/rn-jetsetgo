@@ -7,7 +7,10 @@
       "developmentClient": true,
       "distribution": "internal",
       "android": {
-        "gradleCommand": ":app:assembleDebug"
+        "gradleCommand": ":app:assembleDebug",
+        "env": {
+          "EXPO_PUBLIC_FLIGHT_SERVER_URL":"https://api.npoint.io"
+        }
       },
       "ios": {
         "buildConfiguration": "Debug"

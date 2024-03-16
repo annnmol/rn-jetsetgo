@@ -1,19 +1,13 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export const AUTH_USER_KEY = 'auth-user';
 
-interface IData {
-    // Define your IData interface here
-}
-
-interface IFlight {
-    // Define your IFlight interface here
-}
-
 interface StoreState {
-    authSession: IData | null;
+    _hasHydrated: boolean;
+    setHasHydrated: (state: boolean) => void;
+    authSession: any | null | undefined;
     setAuthSession: (authSession: IData | null) => void;
     allFlights: IFlight[];
     setAllFlights: (flights: IFlight[]) => void;
@@ -26,33 +20,15 @@ interface StoreState {
     removeEverything: () => void;
 }
 
-// const useAppStore = create<StoreState>((set) => ({
-//   authSession: null,
-//   setAuthSession: async (payload: IData | null) => {
-//     set({ authSession: payload });
-//   },
-//   allFlights: [],
-//   setAllFlights: (payload: IFlight[]) => set({ allFlights: payload }),
-//   selectedFlight: null,
-//   setSelectedFlight: (payload: IFlight | null) => set({ selectedFlight: payload }),
-//   FilteredFlights: [],
-//   setFilteredFlights: (payload: IFlight[]) => set({ FilteredFlights: payload }),
-//   selectedSeat: '',
-//   setSelectedSeat: (payload: string) => set({ selectedSeat: payload }),
-
-//   // Clear all data
-//   removeEverything: () => set({ authSession: null, allFlights: [], selectedFlight: null, FilteredFlights: [], selectedSeat: '' }),
-// }));
-
-// // Configure persistence for the 'authSession' state
-// useAppStore.persist(
-//   createJSONStorage(() => AsyncStorage),
-//   'authSession'
-// );
-
 export const useAppStore = create(
     persist(
         (set, get) => ({
+            _hasHydrated: false,
+            setHasHydrated: (state) => {
+              set({
+                _hasHydrated: state
+              });
+            },
             authSession: null,
             setAuthSession: async (payload: IData | null) => {
                 set({ authSession: payload });

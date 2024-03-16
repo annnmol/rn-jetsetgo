@@ -7,6 +7,7 @@ import {
   ToastAndroid,
   View,
 } from "react-native";
+import { useShallow } from "zustand/react/shallow";
 
 //user defined components
 import AppFormTextInput from "@/components/forms/AppFormTextField";
@@ -16,7 +17,6 @@ import globalStyles from "@/theme/globalStyles";
 import { CONSTANTS, THEME } from "@/theme/theme";
 import { validateEmail } from "@/lib/utils";
 import useAppStore from "@/store/app-store";
-import { useShallow } from "zustand/react/shallow";
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -34,8 +34,7 @@ const RegisterUserScreen = ({ navigation }: Props) => {
   const handleBackBtn = () => {
     setFormStep(formStep - 1);
   };
-  const handleSignUpBtnClick = (formData: IData) => {
-    console.log("Sign Up button clicked", { formData });
+  const handleSignUp = (formData: IData) => {
     setAuthSession(formData);
     navigation.navigate("welcome-screen");
     ToastAndroid.show("Amazing! New account created", ToastAndroid.SHORT);
@@ -61,7 +60,7 @@ const RegisterUserScreen = ({ navigation }: Props) => {
     }
 
     if (formStep === 3) {
-      handleSignUpBtnClick({ fullName, email, password });
+      handleSignUp({ fullName, email, password });
       return;
     }
 
@@ -106,7 +105,7 @@ const RegisterUserScreen = ({ navigation }: Props) => {
               title="Please provide a valid email"
               subTitle="Email verification helps us keep your account secure."
               Icon="email-outline"
-              key={"name"}
+              key={"email"}
             />
 
             <View style={styles.fieldContainer}>
