@@ -14,7 +14,7 @@ interface Props {
   navigation: NavigationProp<any>; // Define the type for navigation
 }
 
-const HomeScreen:React.FC<Props> = ({navigation}) => {
+const HomeScreen = ({navigation}:Props) => {
   // const authSession = useAppStore(useShallow((state) => state.authSession));
   // console.log(
   //   `🚀 ~ file: home-screen.tsx:11 ~ HomeScreen ~ authSession:`,

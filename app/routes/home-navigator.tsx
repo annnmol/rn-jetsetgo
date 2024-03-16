@@ -9,15 +9,19 @@ import ViewOrderScreen from "@/screens/home-tab/view-order-screen";
 
 const Stack = createStackNavigator();
 
-const HomeTabNavigator = () => {
+const HomeNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={"home-screen"}>
-      <Stack.Screen name="home-screen" component={HomeScreen} />
-      <Stack.Screen name="search-screen" component={SearchScreen} />
+      <Stack.Screen
+        name="home-screen"
+        component={HomeScreen}
+        options={{ presentation: "card", headerShown: false }}
+      />
+      <Stack.Screen name="search-screen" component={SearchScreen} options={{ presentation: "modal", headerShown: true }}/>
       <Stack.Screen name="details-screen" component={DetailsScreen} />
       <Stack.Screen name="view-order-screen" component={ViewOrderScreen} />
     </Stack.Navigator>
   );
 };
 
-export default HomeTabNavigator;
+export default HomeNavigator;
