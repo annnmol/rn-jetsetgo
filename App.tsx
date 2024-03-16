@@ -1,15 +1,20 @@
-import Providers from "@/lib/providers";
-import HomeScreen from "@/screens/home-tab/home-screen";
 import { StatusBar } from "expo-status-bar";
 import { Fragment } from "react";
 import { StyleSheet } from "react-native";
+// import "react-native-gesture-handler";
+import { enableScreens } from "react-native-screens"; // Import enableScreens
+
+import Providers from "@/lib/providers";
+import RootNavigator from "@/routes/root-navigator";
+
+enableScreens(); // Enable the use of screens
 
 export default function App() {
   return (
     <Fragment>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" animated networkActivityIndicatorVisible={true} />
       <Providers>
-        <HomeScreen />
+        <RootNavigator />
       </Providers>
     </Fragment>
   );
