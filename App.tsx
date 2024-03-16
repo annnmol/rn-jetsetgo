@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler";
 import { Fragment } from "react";
+import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
-// import "react-native-gesture-handler";
 import { enableScreens } from "react-native-screens"; // Import enableScreens
 
 import Providers from "@/lib/providers";
