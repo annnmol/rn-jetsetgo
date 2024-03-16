@@ -1,32 +1,20 @@
-import 'react-native-gesture-handler';
-import { Fragment } from "react";
+import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
-import { enableScreens } from "react-native-screens"; // Import enableScreens
+import { Fragment } from "react";
+import { enableScreens } from "react-native-screens"; 
 
 import Providers from "@/lib/providers";
 import RootNavigator from "@/routes/root-navigator";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 enableScreens(); // Enable the use of screens
 
 export default function App() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Fragment>
-        <StatusBar
-          style="auto"
-          animated
-          networkActivityIndicatorVisible={true}
-        />
-        <Providers>
-          <RootNavigator />
-        </Providers>
-      </Fragment>
-    </GestureHandlerRootView>
+    <Fragment>
+      <StatusBar style="auto" animated networkActivityIndicatorVisible={true} />
+      <Providers>
+        <RootNavigator />
+      </Providers>
+    </Fragment>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-});
