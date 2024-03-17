@@ -1,19 +1,11 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useShallow } from "zustand/react/shallow";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import globalStyles from "@/theme/globalStyles";
 import { NavigationProp } from "@react-navigation/native";
-import AppButton from "@/components/shared/AppButton";
-import TvScreen from "@/components/cards/blob-card";
-import HomeHeader from "@/components/home/home-header";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { CONSTANTS, THEME } from "@/theme/theme";
-import AppText from "@/components/shared/AppText";
-import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import FlightSearchCard from "@/components/home/flight-search-card";
 import HomeFooter from "@/components/home/home-footer";
+import HomeHeader from "@/components/home/home-header";
 import HomeOffers from "@/components/home/home-offers";
+import { CONSTANTS } from "@/theme/theme";
 
 //user defined components
 // import useAppStore from "@/store/app-store";
