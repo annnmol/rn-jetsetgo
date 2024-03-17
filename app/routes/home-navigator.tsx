@@ -15,7 +15,7 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="home-screen"
         component={HomeScreen}
-        options={{ presentation: "card", headerShown: false }}
+        options={{ presentation: "card", headerShown: false, }}
       />
       <Stack.Screen name="search-screen" component={SearchScreen} options={{ presentation: "modal", headerShown: true }}/>
       <Stack.Screen name="details-screen" component={DetailsScreen} />

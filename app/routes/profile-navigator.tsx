@@ -12,7 +12,7 @@ const ProfileNavigator = () => {
       <Stack.Screen
         name="user-account-screen"
         component={UserAccountScreen}
-        options={{ presentation: "card", headerShown: true }}
+        options={{ presentation: "card", headerShown: false }}
       />
     </Stack.Navigator>
   );

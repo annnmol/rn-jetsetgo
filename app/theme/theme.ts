@@ -11,7 +11,7 @@ export const THEME = {
     DARK_GRAY: "#333333",
     DANGER: "#FF0000",
     SUCCESS: "#00FF00",
-    WARNING: "#FFA500",
+    WARNING: "#FDB35B",
     INFO: "#ADD8E6",
     TEXT: "rgba(0,0,0,0.87)",
     TEXT_LIGHT: "rgba(0,0,0,0.45)",
@@ -77,8 +77,7 @@ export const TYPOGRAPHY: any = {
     },
     body3: {
         fontSize: 14,
-        fontWeight: "500",
-        lineHeight: 20,
+        lineHeight: 16,
         letterSpacing: 0.5,
     },
 };

@@ -19,7 +19,7 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="login-user-screen"
         component={LoginUserScreen}
-        options={{ headerShown: true }}
+        options={{ headerShown: true, title:"Login to your account", headerTitleAlign:"center"}}
       />
       <Stack.Screen
         name="register-user-screen"

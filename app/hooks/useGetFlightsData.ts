@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useShallow } from "zustand/react/shallow";
 
@@ -8,22 +7,36 @@ import useAppStore from "@/store/app-store";
 import { NetworkService } from "@/services/network";
 
 const useGetFlights = () => {
-	const [loading, setLoading] = useState(false);
-	const setAllFlights = useAppStore(useShallow((state) => state.setAllFlights));
+  const [loading, setLoading] = useState(false);
+  const setAllFlights = useAppStore(useShallow((state) => state.setAllFlights));
 
-	const getAllFlights = async (id: string) => {
-		setLoading(true);
-		NetworkService.get(`/${id}`).then((res: any) => {
-			console.log(`🚀 ~ file: useGetMessages.ts:18 ~ NetworkService.get ~ res:`, res);
-			if (res?.error) return handleError(res);
-			setAllFlights(res?.data);
-		}).catch((error) => {
-			handleError(error);
-		}).finally(() => {
-			setLoading(false);
-		});
-	};
+  const getAllFlights = (id: string): Promise<any> => {
+    return new Promise((resolve, reject) => {
+      setLoading(true);
+      NetworkService.get(`/${id}`)
+        .then((res: any) => {
+          console.log(
+            `🚀 ~ file: useGetFlights.ts:18 ~ NetworkService.get ~ res:`,
+            res
+          );
+          if (res?.error) {
+            handleError(res);
+            reject(res);
+          } else {
+            setAllFlights(res?.data);
+            resolve(res);
+          }
+        })
+        .catch((error) => {
+          handleError(error);
+          reject(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    });
+  };
 
-	return { getAllFlights, loading };
+  return { getAllFlights, loading };
 };
-export default useGetFlights
+export default useGetFlights;

@@ -1,8 +1,8 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { enableScreens } from "react-native-screens";
 import { useShallow } from "zustand/react/shallow";
 
@@ -15,22 +15,34 @@ SplashScreen.preventAutoHideAsync();
 
 enableScreens(); // Enable the use of screens
 
-let IS_APP_LOADING = true;
-
-const unsub = useAppStore.persist.onFinishHydration((state) => {
-  console.log('hydration finished');
-  IS_APP_LOADING = false;
-  SplashScreen.hideAsync();
-  unsub();
-})
 export default function App() {
   const authSession = useAppStore(useShallow((state) => state.authSession));
+  const [isAppLoading, setIsAppLoading] = useState(true);
+
+  useEffect(() => {
+    const unsub = useAppStore.persist.onFinishHydration((state) => {
+      console.log("presist storage hydration finished");
+      SplashScreen.hideAsync();
+      setIsAppLoading(false);
+    });
+
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  if (isAppLoading) return null;
+
   return (
     <Fragment>
-      <StatusBar style="auto" animated networkActivityIndicatorVisible={true} />
+      <StatusBar
+        style={authSession?.email ? "light" : "dark"}
+        animated
+        networkActivityIndicatorVisible={true}
+      />
       <NavigationContainer>
-      {authSession?.email ? <BottomTabsNavigator /> : <AuthNavigator />}
-    </NavigationContainer>
+        {authSession?.email ? <BottomTabsNavigator /> : <AuthNavigator />}
+      </NavigationContainer>
     </Fragment>
   );
 }

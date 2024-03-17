@@ -1,11 +1,12 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
 
 //user defined components
+import { CONSTANTS, THEME } from "@/theme/theme";
 import HomeNavigator from "./home-navigator";
 import ProfileNavigator from "./profile-navigator";
+import AppText from "@/components/shared/AppText";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,10 +14,35 @@ const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
         tabBarShowLabel: true,
-        tabBarStyle: styles.customTabBarStyle,
-        tabBarLabelStyle: styles.customTabBarLabelStyle,
+        tabBarActiveTintColor: THEME.PRIMARY,
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: "500",
+          letterSpacing: 0.5,
+        },
+        tabBarStyle: {
+          borderTopWidth: 0,
+          paddingBottom: 6,
+          paddingTop: 4,
+        },
+
+        //header
+        headerShown: true,
+        headerTintColor: THEME.WHITE,
+        headerTitleAlign: "center",
+        headerTitleStyle: {
+          fontSize: 20,
+          fontWeight: "600",
+          color: THEME.WHITE,
+        },
+        headerStyle: {
+          backgroundColor: THEME.PRIMARY,
+          height: 90,
+          borderBottomColor: "transparent",
+          shadowColor: "transparent",
+        },
+       
       }}
       initialRouteName="home-tab"
     >
@@ -32,6 +58,15 @@ const BottomTabsNavigator = () => {
             />
           ),
           tabBarLabel: "Home",
+          title: "JetSetGo",
+          headerRight: ({ tintColor }) => (
+            <Ionicons
+              name="notifications-outline"
+              size={20}
+              color={tintColor}
+              style={{  marginRight: CONSTANTS.spacing, }}
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -46,6 +81,7 @@ const BottomTabsNavigator = () => {
             />
           ),
           tabBarLabel: "Profile",
+          title: "Profile",
         }}
       />
     </Tab.Navigator>
@@ -53,17 +89,3 @@ const BottomTabsNavigator = () => {
 };
 
 export default BottomTabsNavigator;
-
-const styles = StyleSheet.create({
-  customTabBarStyle: {
-    borderTopWidth: 0,
-    paddingBottom: 6,
-    paddingTop: 4,
-  },
-
-  customTabBarLabelStyle: {
-    fontSize: 11,
-    fontWeight: "500",
-    letterSpacing: 0.5,
-  },
-});

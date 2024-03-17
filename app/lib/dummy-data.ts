@@ -2,14 +2,19 @@ import { getRandomProfilePic } from "./utils";
 
 export const GITHUB_URL = "https://github.com/annnmol";
 
-export const DUMMY_USER = {
-    id: 1,
-    email: "anmol@hi2.in",
-    name: "Anmol Tanwar",
-    avatar: getRandomProfilePic("Anmol Tanwar"),
-}
+export const DUMMY_LISTING_DATA = Array.from({ length: 30 }, (_, index) => ({
+  id: index + 1,
+  name: `Day ${index + 1}`,
+}));
 
-export const DUMMY_FLIGHT_DATA:IFlight[] = [
+export const DUMMY_USER = {
+  id: 1,
+  email: "anmol@hi2.in",
+  name: "Anmol Tanwar",
+  avatar: getRandomProfilePic("Anmol Tanwar"),
+};
+
+export const DUMMY_FLIGHT_DATA: IFlight[] = [
   {
     id: 1,
     gate: "A2",
@@ -289,5 +294,245 @@ export const DUMMY_FLIGHT_DATA:IFlight[] = [
     flightNumber: "AI230",
     departureTime: "2024-03-15T17:00:00",
     seatsAvailable: 110,
+  },
+];
+
+export const DUMMY_AIRPORT_CITIES = [
+  {
+    id: 1,
+    city: "Mumbai",
+    airportCode: "BOM",
+    image: "https://source.unsplash.com/featured/?mumbai,heritage",
+  },
+  {
+    id: 2,
+    city: "Delhi",
+    airportCode: "DEL",
+    image: "https://source.unsplash.com/featured/?delhi,heritage",
+  },
+  {
+    id: 3,
+    city: "Bangalore",
+    airportCode: "BLR",
+    image: "https://source.unsplash.com/featured/?bangalore,heritage",
+  },
+  {
+    id: 4,
+    city: "Chennai",
+    airportCode: "MAA",
+    image: "https://source.unsplash.com/featured/?chennai,heritage",
+  },
+  {
+    id: 5,
+    city: "Kolkata",
+    airportCode: "CCU",
+    image: "https://source.unsplash.com/featured/?kolkata,heritage",
+  },
+  {
+    id: 6,
+    city: "Hyderabad",
+    airportCode: "HYD",
+    image: "https://source.unsplash.com/featured/?hyderabad,heritage",
+  },
+  {
+    id: 7,
+    city: "Pune",
+    airportCode: "PNQ",
+    image: "https://source.unsplash.com/featured/?pune,heritage",
+  },
+  {
+    id: 8,
+    city: "Ahmedabad",
+    airportCode: "AMD",
+    image: "https://source.unsplash.com/featured/?ahmedabad,heritage",
+  },
+  {
+    id: 9,
+    city: "Jaipur",
+    airportCode: "JAI",
+    image: "https://source.unsplash.com/featured/?jaipur,heritage",
+  },
+  {
+    id: 10,
+    city: "Lucknow",
+    airportCode: "LKO",
+    image: "https://source.unsplash.com/featured/?lucknow,heritage",
+  },
+  {
+    id: 11,
+    city: "Kochi",
+    airportCode: "COK",
+    image: "https://source.unsplash.com/featured/?kochi,heritage",
+  },
+  {
+    id: 12,
+    city: "Goa",
+    airportCode: "GOI",
+    image: "https://source.unsplash.com/featured/?goa,heritage",
+  },
+  {
+    id: 13,
+    city: "Bhopal",
+    airportCode: "BHO",
+    image: "https://source.unsplash.com/featured/?bhopal,heritage",
+  },
+  {
+    id: 14,
+    city: "Indore",
+    airportCode: "IDR",
+    image: "https://source.unsplash.com/featured/?indore,heritage",
+  },
+  {
+    id: 15,
+    city: "Vadodara",
+    airportCode: "BDQ",
+    image: "https://source.unsplash.com/featured/?vadodara,heritage",
+  },
+  {
+    id: 16,
+    city: "Surat",
+    airportCode: "STV",
+    image: "https://source.unsplash.com/featured/?surat,heritage",
+  },
+  {
+    id: 17,
+    city: "Nagpur",
+    airportCode: "NAG",
+    image: "https://source.unsplash.com/featured/?nagpur,heritage",
+  },
+  {
+    id: 18,
+    city: "Bhubaneswar",
+    airportCode: "BBI",
+    image: "https://source.unsplash.com/featured/?bhubaneswar,heritage",
+  },
+  {
+    id: 19,
+    city: "Coimbatore",
+    airportCode: "CJB",
+    image: "https://source.unsplash.com/featured/?coimbatore,heritage",
+  },
+  {
+    id: 20,
+    city: "Visakhapatnam",
+    airportCode: "VTZ",
+    image: "https://source.unsplash.com/featured/?visakhapatnam,heritage",
+  },
+  {
+    id: 21,
+    city: "Patna",
+    airportCode: "PAT",
+    image: "https://source.unsplash.com/featured/?patna,heritage",
+  },
+  {
+    id: 22,
+    city: "Kanpur",
+    airportCode: "KNU",
+    image: "https://source.unsplash.com/featured/?kanpur,heritage",
+  },
+  {
+    id: 23,
+    city: "Thiruvananthapuram",
+    airportCode: "TRV",
+    image: "https://source.unsplash.com/featured/?thiruvananthapuram,heritage",
+  },
+  {
+    id: 24,
+    city: "Kozhikode",
+    airportCode: "CCJ",
+    image: "https://source.unsplash.com/featured/?kozhikode,heritage",
+  },
+  {
+    id: 25,
+    city: "Mangalore",
+    airportCode: "IXE",
+    image: "https://source.unsplash.com/featured/?mangalore,heritage",
+  },
+  {
+    id: 26,
+    city: "Raipur",
+    airportCode: "RPR",
+    image: "https://source.unsplash.com/featured/?raipur,heritage",
+  },
+  {
+    id: 27,
+    city: "Ranchi",
+    airportCode: "IXR",
+    image: "https://source.unsplash.com/featured/?ranchi,heritage",
+  },
+  {
+    id: 28,
+    city: "Guwahati",
+    airportCode: "GAU",
+    image: "https://source.unsplash.com/featured/?guwahati,heritage",
+  },
+  {
+    id: 29,
+    city: "Jodhpur",
+    airportCode: "JDH",
+    image: "https://source.unsplash.com/featured/?jodhpur,heritage",
+  },
+  {
+    id: 30,
+    city: "Amritsar",
+    airportCode: "ATQ",
+    image: "https://source.unsplash.com/featured/?amritsar,heritage",
+  },
+];
+
+
+export const DUMMY_TRAVEL_CATEGORIES = [
+  {
+    id: 1,
+    name: "Flights",
+    icon: "airplane-outline",
+  },
+  {
+    id: 2,
+    name: "Trains",
+    icon: "train-outline",
+  },
+  {
+    id: 3,
+    name: "Cars",
+    icon: "car-outline",
+  },
+  {
+    id: 4,
+    name: "Hotels",
+    icon: "bed-outline",
+  },
+  {
+    id: 5,
+    name: "Bikes",
+    icon: "bicycle-outline",
+  },
+  {
+    id: 6,
+    name: "Restaurants",
+    icon: "restaurant-outline",
+  },
+];
+
+
+
+export const DUMMY_TRAVEL_OFFERS = [
+  {
+    id: 1,
+    title: "Early Bird Special",
+    subTitle: "Book 30 days in advance and get a 20% discount.",
+    image: "https://source.unsplash.com/100x100/?travel,earlybird",
+  },
+  {
+    id: 2,
+    title: "Last Minute Deal",
+    subTitle: "Get up to 50% off on last minute hotel bookings.",
+    image: "https://source.unsplash.com/100x100/?travel,lastminute",
+  },
+  {
+    id: 3,
+    title: "Weekend Getaway",
+    subTitle: "Enjoy a 15% discount on weekend trips to select destinations.",
+    image: "https://source.unsplash.com/100x100/?travel,weekend",
   },
 ];
