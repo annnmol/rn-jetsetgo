@@ -1,5 +1,5 @@
-import React from "react";
 import { NavigationProp } from "@react-navigation/native";
+import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 
 //user defined components
@@ -7,8 +7,6 @@ import AppButton from "@/components/shared/AppButton";
 import AppText from "@/components/shared/AppText";
 import globalStyles from "@/theme/globalStyles";
 import { CONSTANTS, THEME } from "@/theme/theme";
-import useAppStore from "@/store/app-store";
-import { useShallow } from "zustand/react/shallow";
 
 const WELCOME_IMAGE = require("../../assets/images/welcome.png");
 
@@ -17,10 +15,6 @@ interface Props {
 }
 
 const WelcomeScreen = ({ navigation }: Props) => {
-  const authSession = useAppStore(useShallow((state) => state.authSession));
-
-  console.log(`🚀 ~ file: welcome-screen.tsx:22 ~ WelcomeScreen ~ authSession:`, authSession);
-
 
   const handleLoginBtnClick = () => {
     navigation.navigate("login-user-screen");
@@ -112,8 +106,8 @@ const styles = StyleSheet.create({
     marginTop: CONSTANTS.spacingLXX,
   },
   infoBox: {
-    borderTopEndRadius:CONSTANTS.spacingLX,
-    borderTopStartRadius:CONSTANTS.spacingLX,
+    borderTopEndRadius: CONSTANTS.spacingLX,
+    borderTopStartRadius: CONSTANTS.spacingLX,
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",

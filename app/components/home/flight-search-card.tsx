@@ -1,157 +1,126 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import AppText from "../shared/AppText";
+import { useNavigation } from "@react-navigation/native";
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  View,
+} from "react-native";
+
+//user defined components
+import { formatDateTime } from "@/lib/utils";
 import { CONSTANTS, THEME } from "@/theme/theme";
 import AppButton from "../shared/AppButton";
-import { formatDateTime } from "@/lib/utils";
-import { MaterialIcons } from "@expo/vector-icons";
-
-const PLANE_IMAGE = require("../../assets/images/welcome.png");
-
-// {
-//   id: 1,
-//   gate: "A2",
-//   seatsAvailable: 120,
-
-//   origin: "Delhi",
-// airline: "IndiGo",
-//   aircraft: "Airbus A320",
-//   flightNumber: "6E101",
-//   destination: "Mumbai",
-
-//   duration: "3 hours",
-// arrivalTime: "2024-03-15T11:00:00",
-//   departureTime: "2024-03-15T08:00:00",
-
-//   price: 5000,
-// },
-interface Props {
-  // id: number;
-  // gate: string;
-  price?: number;
-  origin?: string;
-  airline?: string;
-  // aircraft: string;
-  duration?: string;
-  arrivalTime?: string;
-  destination?: string;
-  flightNumber?: string;
-  departureTime?: string;
-  // seatsAvailable: number;
-}
+import AppText from "../shared/AppText";
 
 const FlightSearchCard = ({
-  // id,
-  // gate,
-  price = 4500,
-  airline = "IndiGo",
-  // aircraft,
-  duration = "3 hours",
-  destination = "Mumbai",
-  flightNumber = "6E101",
-  arrivalTime = "2024-03-15T11:00:00",
-  departureTime = "2024-03-15T08:00:00",
-  // seatsAvailable,
-  origin = "Delhi",
-}: Props) => {
+  id,
+  origin,
+  destination,
+  airline,
+  flightNumber,
+  departureTime,
+  arrivalTime,
+  duration,
+  price,
+  gate,
+}: IFlight) => {
+  const navigation = useNavigation<any>();
+
+  const handleClick = (e: GestureResponderEvent, id: number | string) => {
+    navigation.navigate("view-order-screen", { id });
+  };
   return (
-    <Pressable style={styles.cardContainer}>
-      <View style={styles.topRow}>
-        <View style={styles.bottomLeft}>
-          <AppText variant="body2" style={styles.cardTitle}>
+    <Pressable style={styles.cardContainer} onPress={(e) => handleClick(e, id)}>
+      <View style={styles.bottomRow}>
+        <View style={styles.column}>
+          <AppText style={[styles.labelText]}>{origin}</AppText>
+          <AppText style={[styles.titleText]}>
             {origin?.slice(0, 3)?.toUpperCase()}
           </AppText>
-
-          <AppText variant="body2" style={styles.cardSubTitle}>
-            {origin}
-          </AppText>
         </View>
-        <View style={[styles.topMiddle, { marginTop: -2 }]}>
-          <AppText variant="body2" style={[styles.cardSubTitle,{fontWeight:"600"}]}>
-            {airline}
-          </AppText>
-          <AppText variant="body2" style={{ color: THEME.GRAY, fontSize: 12 }}>
-            {flightNumber}
-          </AppText>
+        <View style={[styles.column, { alignItems: "center" }]}>
+          <AppText style={[styles.labelText]}>{flightNumber}</AppText>
+          <AppText style={[styles.titleText]}>{airline}</AppText>
         </View>
-        <View style={styles.bottomRight}>
-          <AppText variant="body2" style={styles.cardTitle}>
+        <View style={[styles.column, { alignItems: "flex-end" }]}>
+          <AppText style={[styles.labelText]}>{destination}</AppText>
+          <AppText style={[styles.titleText]}>
             {destination?.slice(0, 3)?.toUpperCase()}
-          </AppText>
-
-          <AppText variant="body2" style={styles.cardSubTitle}>
-            {destination}
           </AppText>
         </View>
       </View>
-      <View style={styles.middleRow}>
-        <View style={[styles.bottomLeft, { gap: 8 }]}>
-          <AppText variant="body2" style={styles.cardSubTitle}>
-            Depart
-          </AppText>
-          <AppText variant="body2" style={styles.cardTitle}>
-            {formatDateTime(new Date(departureTime)).timeOnly}
+
+      <View style={styles.bottomRow}>
+        <View style={styles.column}>
+          <AppText style={[styles.labelText]}>Departure</AppText>
+          <AppText style={[styles.titleText]}>
+            {formatDateTime(new Date(departureTime as string)).timeOnly}
           </AppText>
         </View>
-        <View
-          style={[
-            styles.topMiddle,
-            styles.middleMiddle,
-          ]}
-        >
+        <View style={[styles.column, { alignItems: "center" }]}>
           <MaterialIcons
             name="flight"
-            size={24}
+            size={16}
             color={THEME.GRAY}
             style={{ transform: [{ rotate: "45deg" }] }}
           />
-          <AppText variant="body2" style={styles.cardSubTitle}>
+          <AppText style={[styles.labelText]} numberOfLines={1}>
             {duration}
           </AppText>
         </View>
-        <View style={[styles.bottomRight, { gap: 8 }]}>
-          <AppText variant="body2" style={styles.cardSubTitle}>
-            Arrival
-          </AppText>
-          <AppText variant="body2" style={styles.cardTitle}>
-            {formatDateTime(new Date(arrivalTime)).timeOnly}
+        <View style={[styles.column, { alignItems: "flex-end" }]}>
+          <AppText style={[styles.labelText]}>Arrival</AppText>
+          <AppText style={[styles.titleText]}>
+            {formatDateTime(new Date(arrivalTime as string)).timeOnly}
           </AppText>
         </View>
       </View>
-      <View style={styles.bottomRow}>
-        <View style={[styles.bottomLeft,{gap:2}]}>
-          <AppText variant="body2" style={[styles.cardSubTitle,{ color: THEME.WHITE }]}>
+
+      <View
+        style={[
+          styles.bottomRow,
+          styles.border,
+          { backgroundColor: "royalblue" },
+        ]}
+      >
+        <View style={styles.column}>
+          <AppText style={[styles.labelText, { color: THEME.WHITE }]}>
             Price
           </AppText>
           <View
             style={{
               flexDirection: "row",
+              alignItems: "center",
               gap: 4,
             }}
           >
             <AppText
               variant="body2"
-              style={{
-                fontWeight: "500",
-                color: THEME.WHITE,
-                fontSize: 10,
-                textDecorationLine: "line-through",
-              }}
+              style={[
+                styles.titleText,
+                {
+                  color: THEME.WHITE,
+                  fontSize: 10,
+                  textDecorationLine: "line-through",
+                },
+              ]}
             >
               ₹ {price + 450}
             </AppText>
             <AppText
               variant="body2"
-              style={[styles.cardTitle,{color: THEME.WHITE }]}
+              style={[styles.titleText, { color: THEME.WHITE }]}
             >
               ₹ {price}
             </AppText>
           </View>
         </View>
-        <View style={styles.bottomRight}>
+        <View style={[styles.column, { alignItems: "flex-end" }]}>
           <AppButton
             variant="primary"
-            onPress={() => undefined}
+            onPress={(e) => handleClick(e, id)}
             textVariant="button3"
             style={{ height: 28, width: 110 }}
           >
@@ -173,84 +142,41 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 4,
 
-    height: 184,
-    // width: CONSTANTS.windowWidth - 32,
-    // marginHorizontal: CONSTANTS.spacing,
     backgroundColor: THEME.WHITE,
     borderRadius: CONSTANTS.spacingM,
     overflow: "hidden",
   },
-  heading: {
-    fontSize: 25,
-    fontWeight: "bold",
-    marginBottom: 8,
-    color: "green",
-    alignItems: "center",
-  },
-  boldBody: {
+
+  labelText: {
     fontWeight: "600",
-    fontSize: 16,
+    fontSize: 13,
+    color: THEME.GRAY,
+  },
+  titleText: {
+    fontWeight: "600",
+    fontSize: 15,
+    color: THEME.TEXT,
   },
 
-  topRow: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    height: 60,
-    paddingHorizontal: CONSTANTS.spacing,
-    paddingTop: CONSTANTS.spacingM,
-  },
-  middleRow: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    minHeight: 72,
-    maxHeight: 72,
-    paddingHorizontal: CONSTANTS.spacing,
-    paddingTop: CONSTANTS.spacingM,
-  },
   bottomRow: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "royalblue",
-    height: 52,
-    borderTopStartRadius: CONSTANTS.spacing,
-    borderTopEndRadius: CONSTANTS.spacing,
-    borderStyle: "dashed",
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: THEME.PRIMARY,
     paddingHorizontal: CONSTANTS.spacing,
-  },
-  bottomLeft: {
-    flex: 1,
-    alignItems: "flex-start",
-    gap: CONSTANTS.spacingSX,
-  },
-  bottomRight: {
-    flex: 1,
-    alignItems: "flex-end",
-    gap: CONSTANTS.spacingSX,
+    paddingVertical: CONSTANTS.spacingSX,
+    height: 52,
   },
 
-  topMiddle: {
-    flex: 1,
-    alignItems: "center",
-  },
-  middleMiddle: {
-    marginTop: -14,
-    flexDirection: "row",
+  column: {
+    alignItems: "flex-start",
     justifyContent: "center",
-    alignItems: "center",
+    gap: CONSTANTS.spacingSX,
+    flex: 1,
   },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-  
-  },
-  cardSubTitle: {
-    fontSize: 14,
-    color: THEME.TEXT_MEDIUM,
+
+  border: {
+    borderTopColor: THEME.TEXT_LIGHT,
+    borderTopWidth: 1,
+    borderStyle: "dashed",
   },
 });

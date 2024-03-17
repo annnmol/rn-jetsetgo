@@ -67,17 +67,14 @@ export const TYPOGRAPHY: any = {
     //body
     body1: {
         fontSize: 15,
-        lineHeight: 20,
         letterSpacing: 0.5,
     },
     body2: {
         fontSize: 14,
-        lineHeight: 18,
         letterSpacing: 0.5,
     },
     body3: {
         fontSize: 14,
-        lineHeight: 16,
         letterSpacing: 0.5,
     },
 };

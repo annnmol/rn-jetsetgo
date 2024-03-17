@@ -25,9 +25,7 @@ export default AppFormTextInput;
 
 const styles = StyleSheet.create({
   inputField: {
-    width: "100%",
     height: 44,
-
     backgroundColor: THEME.LIGHT_GRAY,
     borderRadius: 4,
     paddingRight: 12,

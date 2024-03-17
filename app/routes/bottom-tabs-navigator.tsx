@@ -1,12 +1,11 @@
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 
 //user defined components
-import { CONSTANTS, THEME } from "@/theme/theme";
+import { THEME } from "@/theme/theme";
 import HomeNavigator from "./home-navigator";
 import ProfileNavigator from "./profile-navigator";
-import AppText from "@/components/shared/AppText";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,21 +27,8 @@ const BottomTabsNavigator = () => {
         },
 
         //header
-        headerShown: true,
-        headerTintColor: THEME.WHITE,
-        headerTitleAlign: "center",
-        headerTitleStyle: {
-          fontSize: 20,
-          fontWeight: "600",
-          color: THEME.WHITE,
-        },
-        headerStyle: {
-          backgroundColor: THEME.PRIMARY,
-          height: 90,
-          borderBottomColor: "transparent",
-          shadowColor: "transparent",
-        },
-       
+        headerShown: false,
+        tabBarHideOnKeyboard: true,
       }}
       initialRouteName="home-tab"
     >
@@ -58,15 +44,6 @@ const BottomTabsNavigator = () => {
             />
           ),
           tabBarLabel: "Home",
-          title: "JetSetGo",
-          headerRight: ({ tintColor }) => (
-            <Ionicons
-              name="notifications-outline"
-              size={20}
-              color={tintColor}
-              style={{  marginRight: CONSTANTS.spacing, }}
-            />
-          ),
         }}
       />
       <Tab.Screen
@@ -81,7 +58,6 @@ const BottomTabsNavigator = () => {
             />
           ),
           tabBarLabel: "Profile",
-          title: "Profile",
         }}
       />
     </Tab.Navigator>

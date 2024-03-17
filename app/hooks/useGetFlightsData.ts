@@ -23,7 +23,7 @@ const useGetFlights = () => {
             handleError(res);
             reject(res);
           } else {
-            setAllFlights(res?.data);
+            setAllFlights(res);
             resolve(res);
           }
         })

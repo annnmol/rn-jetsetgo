@@ -35,7 +35,6 @@ const HomeHeader = () => {
   };
 
   return (
-    <Fragment>
       <FlatList
         data={DUMMY_TRAVEL_CATEGORIES}
         renderItem={renderItem}
@@ -44,7 +43,6 @@ const HomeHeader = () => {
         contentContainerStyle={styles.container}
         keyExtractor={(item) => item.id.toString()}
       />
-    </Fragment>
   );
 };
 
@@ -53,12 +51,13 @@ export default HomeHeader;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: CONSTANTS.spacing,
-    paddingVertical: CONSTANTS.spacingM,
+    // paddingVertical: CONSTANTS.spacingS,
+    height: 52,
     gap: CONSTANTS.spacingS,
     backgroundColor: THEME.PRIMARY,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+
   },
   chip: {
     flexDirection: "row",
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "transparent",
     paddingHorizontal: CONSTANTS.spacingS,
-    height: 32,
+    height: 28,
     gap: CONSTANTS.spacingS,
   },
   chipText: {

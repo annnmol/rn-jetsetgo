@@ -32,7 +32,7 @@ export default HomeFooter;
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: CONSTANTS.spacingL,
+    paddingBottom: CONSTANTS.spacingL,
     gap: CONSTANTS.spacingSX,
   },
   text: {

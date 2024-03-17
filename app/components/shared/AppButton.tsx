@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  GestureResponderEvent,
   StyleProp,
   StyleSheet,
   TouchableOpacity,
@@ -15,7 +16,7 @@ interface Props extends React.ComponentProps<typeof TouchableOpacity> {
   variant?: "outline" | "primary" | "text";
   textVariant?: "button1" | "button2" | "button3";
   style?: StyleProp<ViewStyle>;
-  onPress: () => void;
+  onPress: (e: GestureResponderEvent) => any;
   children: React.ReactNode;
   [otherProps: string]: any;
 }
@@ -32,7 +33,7 @@ const AppButton: React.FC<Props> = ({
   if (variant === "outline")
     return (
       <TouchableOpacity
-        onPress={() => onPress()}
+        onPress={onPress}
         activeOpacity={0.9}
         style={[styles.outlineButton, style && style]}
         {...otherProps}
@@ -46,7 +47,7 @@ const AppButton: React.FC<Props> = ({
   if (variant === "text")
     return (
       <TouchableOpacity
-        onPress={() => onPress()}
+        onPress={onPress}
         activeOpacity={0.9}
         style={[styles.textButton, style && style]}
         {...otherProps}
@@ -59,7 +60,7 @@ const AppButton: React.FC<Props> = ({
 
   return (
     <TouchableOpacity
-      onPress={() => onPress()}
+      onPress={onPress}
       activeOpacity={0.9}
       style={[styles.primaryButton, style && style]}
       {...otherProps}

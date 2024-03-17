@@ -23,7 +23,7 @@ const UserAccountScreen = () => {
   );
   const authSession = useAppStore(useShallow((state) => state.authSession));
   const profilePic: string =
-    getRandomProfilePic(authSession?.user?.name ?? "Guest") ?? "";
+    getRandomProfilePic(authSession?.fullName ?? "Guest") ?? "";
   const handleLogout = () => {
     setAuthSession(null);
     ToastAndroid.show("User Logged out", ToastAndroid.SHORT);
@@ -31,13 +31,13 @@ const UserAccountScreen = () => {
   return (
     <View style={styles.container}>
       <Image source={{ uri: profilePic }} style={styles.image} />
-      <AppText variant="h5">{authSession?.name ?? "Guest User"}</AppText>
+      <AppText variant="h5">{authSession?.fullName ?? "Guest User"}</AppText>
 
       <View style={styles.infoBox}>
         <View style={styles.fieldContainer}>
           <AppFormLabel>Name</AppFormLabel>
           <AppFormTextInput
-            placeholder={`${authSession?.name ?? "Guest User"} `}
+            placeholder={`${authSession?.fullName ?? "Guest User"} `}
             editable={false}
           />
         </View>
@@ -49,17 +49,17 @@ const UserAccountScreen = () => {
             keyboardType="email-address"
           />
         </View>
-      </View>
       <AppIconButton
         style={{ marginTop: CONSTANTS.spacing }}
         onPress={() => handleLogout()}
-      >
+        >
         <MaterialCommunityIcons
           name="logout"
           color={THEME.DARK_GRAY}
           size={36}
-        />
+          />
       </AppIconButton>
+          </View>
     </View>
   );
 };
@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 60,
-    height: 60,
+    width: 52,
+    height: 52,
     borderRadius: 30,
     objectFit: "cover",
   },
@@ -84,10 +84,12 @@ const styles = StyleSheet.create({
   infoBox: {
     flexDirection: "column",
     gap: CONSTANTS.spacingM,
+    flex: 1,
   },
   fieldContainer: {
     flexDirection: "column",
     width: CONSTANTS.windowWidth / 1.3,
     gap: CONSTANTS.spacingSX,
+    // flex: 1,
   },
 });

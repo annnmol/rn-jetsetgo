@@ -4,16 +4,23 @@ interface IData {
 }
 
 interface IFlight {
-  id: number;
-  gate: string;
+  id: number | string;
+  gate?: string;
   price: number;
   origin: string;
-  airline: string;
-  aircraft: string;
-  duration: string;
-  arrivalTime: string;
+  airline?: string;
+  aircraft?: string;
+  duration?: string;
+  arrivalTime?: string;
   destination: string;
-  flightNumber: string;
-  departureTime: string;
-  seatsAvailable: number;
+  flightNumber?: string;
+  departureTime?: string;
+  seatsAvailable?: number;
+}
+
+interface IAirportCity {
+  id: number;
+  city: string;
+  airportCode?: string;
+  image?: string;
 }

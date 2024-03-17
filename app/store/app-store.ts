@@ -15,6 +15,12 @@ interface StoreState {
   setFilteredFlights: (flights: IFlight[]) => void;
   selectedSeat: string;
   setSelectedSeat: (seat: string) => void;
+
+  currentCity: string;
+  setCurrentCity: (city: string) => void; 
+  destinationCity: string;
+  setDestinationCity: (city: string) => void;
+
   removeEverything: () => void;
 }
 
@@ -35,6 +41,11 @@ export const useAppStore = create(
         set({ FilteredFlights: payload }),
       selectedSeat: "",
       setSelectedSeat: (payload: string) => set({ selectedSeat: payload }),
+
+      currentCity: "",
+      setCurrentCity: (payload: string) => set({ currentCity: payload }),
+      destinationCity: "",
+      setDestinationCity: (payload: string) => set({ destinationCity: payload }),
 
       // Clear all data
       removeEverything: () =>
