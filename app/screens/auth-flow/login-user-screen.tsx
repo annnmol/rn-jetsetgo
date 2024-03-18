@@ -57,7 +57,7 @@ const LoginUserScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false} testID="login-user-screen">
       <KeyboardAvoidingView behavior={"position"} style={{ flex: 1 }}>
         <AuthFormHeader
           title="Welcome Back!"

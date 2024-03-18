@@ -23,8 +23,8 @@ const WelcomeScreen = ({ navigation }: Props) => {
     navigation.navigate("register-user-screen");
   };
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={WELCOME_IMAGE} />
+    <View style={styles.container} testID="welcome-screen">
+      <Image testID="welcome-image" style={styles.image} source={WELCOME_IMAGE} />
       <View style={styles.infoBox}>
         <AppText
           variant="h1"

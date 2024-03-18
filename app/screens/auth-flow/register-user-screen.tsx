@@ -31,8 +31,11 @@ const RegisterUserScreen = ({ navigation }: Props) => {
     useShallow((state) => state.setAuthSession)
   );
 
-  const handleBackBtn = () => {
+  const handlePreviousBtn = () => {
     setFormStep(formStep - 1);
+  };
+  const handleBackBtn = () => {
+    navigation.navigate("welcome-screen");
   };
   const handleSignUp = (formData: IData) => {
     setAuthSession(formData);
@@ -68,7 +71,11 @@ const RegisterUserScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={styles.container}
+      showsVerticalScrollIndicator={false}
+      testID="register-user-screen"
+    >
       <KeyboardAvoidingView behavior={"position"} style={{ flex: 1 }}>
         {/* Step 1 */}
         {formStep === 1 && (
@@ -93,6 +100,13 @@ const RegisterUserScreen = ({ navigation }: Props) => {
                 variant="primary"
               >
                 Continue
+              </AppButton>
+              <AppButton
+                onPress={handleBackBtn}
+                textVariant="button2"
+                variant="text"
+              >
+                Back
               </AppButton>
             </View>
           </Fragment>
@@ -124,11 +138,11 @@ const RegisterUserScreen = ({ navigation }: Props) => {
                 Continue
               </AppButton>
               <AppButton
-                onPress={handleBackBtn}
+                onPress={handlePreviousBtn}
                 textVariant="button2"
                 variant="text"
               >
-                Back
+                Previous
               </AppButton>
             </View>
           </Fragment>
@@ -160,11 +174,11 @@ const RegisterUserScreen = ({ navigation }: Props) => {
                 Create Account
               </AppButton>
               <AppButton
-                onPress={handleBackBtn}
+                onPress={handlePreviousBtn}
                 textVariant="button2"
                 variant="text"
               >
-                Back
+               Back
               </AppButton>
             </View>
           </Fragment>

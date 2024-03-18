@@ -31,6 +31,8 @@ const BottomTabsNavigator = () => {
         tabBarHideOnKeyboard: true,
       }}
       initialRouteName="home-tab"
+      
+      // tabBarAccessibilityLabel={"bottom-tabs-navigator"}
     >
       <Tab.Screen
         name="home-tab"

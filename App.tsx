@@ -17,19 +17,19 @@ SplashScreen.preventAutoHideAsync();
 enableScreens(); // Enable the use of screens
 
 export default function App() {
-  const [isAppLoading, setIsAppLoading] = useState(true); //app ready status flag 
-  const loading = useAppStore(useShallow((state) => state.loading));  //data fetching status
+  const [isAppLoading, setIsAppLoading] = useState(true); //app ready status flag
+  const loading = useAppStore(useShallow((state) => state.loading)); //data fetching status
   const authSession = useAppStore(useShallow((state) => state.authSession));
 
   useEffect(() => {
-    const unsub = useAppStore.persist.onFinishHydration((state) => {
+    const unsub = useAppStore?.persist?.onFinishHydration((state) => {
       console.log("presist storage hydration finished");
       SplashScreen.hideAsync();
       setIsAppLoading(false);
     });
 
     return () => {
-      unsub();
+      unsub && unsub();
     };
   }, []);
 

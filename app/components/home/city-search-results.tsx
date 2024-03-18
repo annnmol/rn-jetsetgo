@@ -50,7 +50,7 @@ const CitySearchResults = ({ filteredData, onPress }: Props) => {
   };
 
   return (
-    <Fragment>
+    <Fragment >
       <FlatList
         data={filteredData}
         renderItem={renderItem}
@@ -59,6 +59,7 @@ const CitySearchResults = ({ filteredData, onPress }: Props) => {
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={header}
         ListEmptyComponent={noData}
+        testID="city-search-results"
       />
     </Fragment>
   );
