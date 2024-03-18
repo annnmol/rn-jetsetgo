@@ -35,6 +35,14 @@
         {
           "launchModeExperimental": "most-recent"
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableProguardInReleaseBuilds":true
+          }
+        }
       ]
     ],
     "extra": {

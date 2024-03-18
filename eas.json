@@ -20,9 +20,7 @@
       "distribution": "internal"
     },
     "production": {
-      "android": {
-        "gradleCommand": ":app:assembleDebug"
-     },
+      "android": {},
       "env": {
         "EXPO_PUBLIC_FLIGHT_SERVER_URL":"https://api.npoint.io"
       }
