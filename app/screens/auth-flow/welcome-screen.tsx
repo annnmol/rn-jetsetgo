@@ -13,7 +13,6 @@ const WELCOME_IMAGE = require("../../assets/images/welcome.png");
 interface Props {
   navigation: NavigationProp<any>; // Define the type for navigation
 }
-
 const WelcomeScreen = ({ navigation }: Props) => {
 
   const handleLoginBtnClick = () => {
