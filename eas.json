@@ -20,7 +20,9 @@
       "distribution": "internal"
     },
     "production": {
-      "android": {},
+      "android": {
+        "buildType": "apk"
+      },
       "env": {
         "EXPO_PUBLIC_FLIGHT_SERVER_URL":"https://api.npoint.io"
       }
