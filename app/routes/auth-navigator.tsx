@@ -6,6 +6,7 @@ import WelcomeScreen from "@/screens/auth-flow/welcome-screen";
 import VerifyUserScreen from "@/screens/auth-flow/verify-user-screen";
 import RegisterUserScreen from "@/screens/auth-flow/register-user-screen";
 import LoginUserScreen from "@/screens/auth-flow/login-user-screen";
+import { THEME } from "@/theme/theme";
 
 const Stack = createStackNavigator();
 
@@ -13,9 +14,21 @@ const AuthNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName={"welcome-screen"}
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: true,
+        headerTintColor: THEME.WHITE,
+        headerTitleAlign: "center",
+        headerTitleStyle: {
+          fontSize: 20,
+          fontWeight: "600",
+          color: THEME.WHITE,
+        },
+        headerStyle: {
+          backgroundColor: THEME.PRIMARY,
+        },
+      }}
     >
-      <Stack.Screen name="welcome-screen" component={WelcomeScreen} />
+      <Stack.Screen name="welcome-screen" component={WelcomeScreen} options={{headerShown:false}}/>
       <Stack.Screen
         name="login-user-screen"
         component={LoginUserScreen}

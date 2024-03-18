@@ -38,7 +38,7 @@ export default function App() {
   return (
     <Fragment>
       <StatusBar
-        style={authSession?.email ? "light" : "dark"}
+        style={"light"}
         animated
         networkActivityIndicatorVisible={true}
       />
