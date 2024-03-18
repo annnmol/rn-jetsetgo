@@ -19,8 +19,14 @@ interface IFlight {
 }
 
 interface IAirportCity {
-  id: number;
+  id: number | string;
   city: string;
   airportCode?: string;
   image?: string;
+}
+
+interface IFilter { 
+  name: string;
+  id: number | string;
+  options: string[];
 }

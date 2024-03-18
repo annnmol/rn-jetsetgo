@@ -13,6 +13,8 @@ import { formatDateTime } from "@/lib/utils";
 import { CONSTANTS, THEME } from "@/theme/theme";
 import AppButton from "../shared/AppButton";
 import AppText from "../shared/AppText";
+import useAppStore from "@/store/app-store";
+import { useShallow } from "zustand/react/shallow";
 
 const FlightSearchCard = ({
   id,
@@ -27,9 +29,13 @@ const FlightSearchCard = ({
   gate,
 }: IFlight) => {
   const navigation = useNavigation<any>();
+  const setLoading = useAppStore(useShallow((state) => state.setLoading));
 
-  const handleClick = (e: GestureResponderEvent, id: number | string) => {
+  const handleClick = async (e: GestureResponderEvent, id: number | string) => {
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     navigation.navigate("view-order-screen", { id });
+    setLoading(false);
   };
   return (
     <Pressable style={styles.cardContainer} onPress={(e) => handleClick(e, id)}>
@@ -66,8 +72,10 @@ const FlightSearchCard = ({
             color={THEME.GRAY}
             style={{ transform: [{ rotate: "45deg" }] }}
           />
-          <AppText style={[styles.labelText]} numberOfLines={1}>
-            {duration}
+          <AppText style={[styles.titleText]} numberOfLines={1}>
+            {/* {duration} */}
+            {formatDateTime(new Date(departureTime as string)).dateOnly}
+
           </AppText>
         </View>
         <View style={[styles.column, { alignItems: "flex-end" }]}>

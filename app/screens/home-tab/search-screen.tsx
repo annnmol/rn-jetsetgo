@@ -1,6 +1,6 @@
 import { NavigationProp } from "@react-navigation/native";
-import React, { useLayoutEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useLayoutEffect } from "react";
+import { FlatList, GestureResponderEvent, Pressable, StyleSheet, View } from "react-native";
 import { useShallow } from "zustand/react/shallow";
 
 //user defined components
@@ -8,7 +8,9 @@ import FlightSearchCard from "@/components/home/flight-search-card";
 import AppText from "@/components/shared/AppText";
 import useAppStore from "@/store/app-store";
 import { CONSTANTS, THEME } from "@/theme/theme";
-import { FlatList } from "react-native-gesture-handler";
+import { Octicons } from "@expo/vector-icons";
+import useGetFlights from "@/hooks/useGetFlights";
+
 interface Props {
   navigation: NavigationProp<any>;
 }
@@ -18,7 +20,9 @@ const SearchScreen = ({ navigation }: Props) => {
   const destinationCity = useAppStore(
     useShallow((state) => state.destinationCity)
   );
-  const allFlights = useAppStore(useShallow((state) => state.allFlights));
+
+  const appliedFilters = useAppStore(useShallow((state) => state.appliedFilters));
+  const {filteredFlights, getFilteredFlights} = useGetFlights();
 
   useLayoutEffect(() => {
     if (!currentCity || !destinationCity) navigation?.goBack();
@@ -27,6 +31,13 @@ const SearchScreen = ({ navigation }: Props) => {
       title: `${currentCity} to ${destinationCity}`,
     });
   }, []);
+
+
+  useEffect(() => { 
+    getFilteredFlights();
+  }, [appliedFilters]);
+
+  
 
   const header = () => {
     return (
@@ -44,11 +55,28 @@ const SearchScreen = ({ navigation }: Props) => {
     );
   };
 
+  const handleClick = (e: GestureResponderEvent) => {
+    navigation.navigate("filters-screen");
+  };
+
   return (
     <View style={styles.container}>
-      <Text>SearchScreen</Text>
+     <Pressable onPress={handleClick} style={styles.filterContainer}>
+        <View  style={[styles.filterBtn]}>
+          <Octicons name="arrow-switch" size={20} color={THEME.TEXT_LIGHT} />
+          <AppText variant="body1" style={{ fontWeight: "600" }}>
+            Sort by:
+          </AppText>
+        </View>
+        <View style={styles.filterBtn}>
+          <Octicons name="filter" size={20} color={THEME.TEXT_LIGHT} />
+          <AppText variant="body1" style={{ fontWeight: "600" }}>
+            Filter by:
+          </AppText>
+        </View>
+      </Pressable>
       <FlatList
-        data={allFlights}
+        data={filteredFlights}
         renderItem={({ item }) => {
           return <FlightSearchCard {...item} />;
         }}
@@ -72,5 +100,24 @@ const styles = StyleSheet.create({
     gap: CONSTANTS.spacing,
     paddingHorizontal: CONSTANTS.spacing,
     paddingVertical: CONSTANTS.spacing,
+  },
+  filterContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: CONSTANTS.spacingS,
+    backgroundColor: THEME.WHITE,
+    gap: CONSTANTS.spacingS,
+  },
+
+  filterBtn: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: CONSTANTS.spacingS,
+    padding: CONSTANTS.spacingM,
+    backgroundColor: THEME.LIGHT_GRAY,
+    borderRadius: 4,
   },
 });

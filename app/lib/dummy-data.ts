@@ -480,7 +480,6 @@ export const DUMMY_AIRPORT_CITIES = [
   },
 ];
 
-
 export const DUMMY_TRAVEL_CATEGORIES = [
   {
     id: 1,
@@ -514,8 +513,6 @@ export const DUMMY_TRAVEL_CATEGORIES = [
   },
 ];
 
-
-
 export const DUMMY_TRAVEL_OFFERS = [
   {
     id: 1,
@@ -535,4 +532,61 @@ export const DUMMY_TRAVEL_OFFERS = [
     subTitle: "Enjoy a 15% discount on weekend trips to select destinations.",
     image: "https://source.unsplash.com/100x100/?travel,weekend",
   },
+];
+
+export const DUMMY_INDIAN_AIRLINES = [
+  {
+    id: 1,
+    name: "IndiGo",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/IndiGo_Logo.svg/1280px-IndiGo_Logo.svg.png",
+  },
+  {
+    id: 2,
+    name: "SpiceJet",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/SpiceJet_Logo.svg/1024px-SpiceJet_Logo.svg.png",
+  },
+  {
+    id: 3,
+    name: "Air India",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Air_India_Logo.svg/1024px-Air_India_Logo.svg.png",
+  },
+  {
+    id: 4,
+    name: "GoAir",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/GoAir_Logo.svg/1024px-GoAir_Logo.svg.png",
+  },
+  {
+    id: 5,
+    name: "Vistara",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Vistara_Logo.svg/1280px-Vistara_Logo.svg.png",
+  },
+  {
+    id: 6,
+    name: "AirAsia",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/AirAsia_New_Logo_2017.svg/1024px-AirAsia_New_Logo_2017.svg.png",
+  },
+  {
+    id: 7,
+    name: "Go First",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Go_First_logo.svg/1024px-Go_First_logo.svg.png",
+  },
+  {
+    id: 8,
+    name: "TruJet",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Trujet_logo.svg/1024px-Trujet_logo.svg.png",
+  },
+  {
+    id: 9,
+    name: "Alliance Air",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Alliance_Air_Logo.svg/1024px-Alliance_Air_Logo.svg.png",
+  },
+];
+
+export const cityNames = DUMMY_AIRPORT_CITIES.map((city) => city?.city) ?? [];
+export const airlineNames =
+  DUMMY_INDIAN_AIRLINES.map((city) => city?.name) ?? [];
+
+export const DUMMY_FILTERS = [
+  { id: 0, name: "sort", options: ["lowToHigh", "highToLow"] },
+  { id: 1, name: "airline", options: airlineNames },
 ];

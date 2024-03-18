@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { NavigationProp } from "@react-navigation/native";
 import {
   KeyboardAvoidingView,
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
   fieldContainer: {
     flexDirection: "column",
     width: "100%",
-    // gap: CONSTANTS.spacingLXX,
     paddingBottom: CONSTANTS.spacingS,
     marginBottom: CONSTANTS.spacingM,
   },

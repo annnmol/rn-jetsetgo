@@ -21,7 +21,6 @@
     },
     "production": {
       "android": {
-        "buildType": "apk",
         "gradleCommand": ":app:assembleDebug"
      },
       "env": {

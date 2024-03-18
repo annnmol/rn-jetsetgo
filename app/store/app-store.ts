@@ -11,15 +11,17 @@ interface StoreState {
   setAllFlights: (flights: IFlight[]) => void;
   selectedFlight: IFlight | null;
   setSelectedFlight: (flight: IFlight | null) => void;
-  FilteredFlights: IFlight[];
-  setFilteredFlights: (flights: IFlight[]) => void;
-  selectedSeat: string;
-  setSelectedSeat: (seat: string) => void;
 
   currentCity: string;
   setCurrentCity: (city: string) => void; 
   destinationCity: string;
   setDestinationCity: (city: string) => void;
+
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+
+  appliedFilters: any;
+  setAppliedFilters: (filters: any) => void;
 
   removeEverything: () => void;
 }
@@ -36,16 +38,17 @@ export const useAppStore = create(
       selectedFlight: null,
       setSelectedFlight: (payload: IFlight | null) =>
         set({ selectedFlight: payload }),
-      FilteredFlights: [],
-      setFilteredFlights: (payload: IFlight[]) =>
-        set({ FilteredFlights: payload }),
-      selectedSeat: "",
-      setSelectedSeat: (payload: string) => set({ selectedSeat: payload }),
 
       currentCity: "",
       setCurrentCity: (payload: string) => set({ currentCity: payload }),
       destinationCity: "",
       setDestinationCity: (payload: string) => set({ destinationCity: payload }),
+
+      loading: false,
+      setLoading: (payload: boolean) => set({ loading: payload }),
+
+      appliedFilters: undefined,
+      setAppliedFilters: (payload: any) => set({ appliedFilters: payload }),
 
       // Clear all data
       removeEverything: () =>
@@ -53,8 +56,11 @@ export const useAppStore = create(
           authSession: null,
           allFlights: [],
           selectedFlight: null,
-          FilteredFlights: [],
-          selectedSeat: "",
+          currentCity: "",
+          destinationCity: "",
+          loading: false,
+          appliedFilters: undefined,
+          
         }),
     }),
     {

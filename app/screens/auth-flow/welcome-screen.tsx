@@ -80,6 +80,7 @@ const WelcomeScreen = ({ navigation }: Props) => {
         >
           Already a member? Login
         </AppButton>
+        
       </View>
     </View>
   );

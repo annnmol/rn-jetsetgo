@@ -3,12 +3,13 @@ import { NavigationProp, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { useShallow } from "zustand/react/shallow";
+
 //user defined components
 import AppFormTextInput from "@/components/forms/AppFormTextField";
 import CitySearchResults from "@/components/home/city-search-results";
-import { DUMMY_AIRPORT_CITIES } from "@/lib/dummy-data";
 import useAppStore from "@/store/app-store";
 import { CONSTANTS, THEME } from "@/theme/theme";
+import useGetCities from "@/hooks/useGetCities";
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -22,21 +23,12 @@ const CitySearchScreen = ({ navigation }: Props) => {
   const setDestinationCity = useAppStore(useShallow((state) => state.setDestinationCity));
 
   const [input, setInput] = useState<string>("");
-  const [filteredData, setFilteredData] =useState<IAirportCity[]>(DUMMY_AIRPORT_CITIES);
+  const {filtredCities,getFiltredCities} = useGetCities();
 
   const handleInputChange = (text: string) => {
     setInput(text);
 
-    if (text.length < 2) {
-      setFilteredData([]);
-      return;
-    }
-
-    // filter the data
-    const newResults = DUMMY_AIRPORT_CITIES.filter((item) => {
-      return item?.city?.toLowerCase()?.includes(text?.toLowerCase()) ?? [];
-    });
-    setFilteredData(newResults);
+    getFiltredCities(text);
   };
 
   const handleClick = (e: any, item: IAirportCity) => { 
@@ -58,13 +50,12 @@ const CitySearchScreen = ({ navigation }: Props) => {
           returnKeyLabel="Search"
           style={{ flex: 1, backgroundColor: "#f5f5f5" }}
           autoCorrect
-          autoFocus
         />
         <View style={styles.iconBox}>
           <MaterialIcons name="search" size={24} color={THEME.GRAY} />
         </View>
       </View>
-      <CitySearchResults filteredData={filteredData} onPress={handleClick}/>
+      <CitySearchResults filteredData={filtredCities} onPress={handleClick}/>
     </View>
   );
 };

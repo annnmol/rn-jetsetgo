@@ -9,6 +9,7 @@ import ViewOrderScreen from "@/screens/home-tab/view-order-screen";
 import CitySearchScreen from "@/screens/home-tab/city-search-screen";
 import { CONSTANTS, THEME } from "@/theme/theme";
 import { Ionicons } from "@expo/vector-icons";
+import FiltersScreen from "@/screens/home-tab/filters-screen";
 
 const Stack = createStackNavigator();
 
@@ -63,6 +64,11 @@ const HomeNavigator = () => {
         name="search-screen"
         component={SearchScreen}
         options={{ presentation: "modal", headerShown: true }}
+      />
+      <Stack.Screen
+        name="filters-screen"
+        component={FiltersScreen}
+        options={{ presentation: "modal", headerShown: true, headerTitle: "Customize your results"}}
       />
       <Stack.Screen name="details-screen" component={DetailsScreen} />
       <Stack.Screen

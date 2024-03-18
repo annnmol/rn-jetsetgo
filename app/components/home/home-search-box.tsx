@@ -1,6 +1,6 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
+import React, { useEffect } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -12,12 +12,11 @@ import {
 import { useShallow } from "zustand/react/shallow";
 
 //user defined components
+import useGetFlights from "@/hooks/useGetFlights";
 import useAppStore from "@/store/app-store";
 import { CONSTANTS, THEME } from "@/theme/theme";
 import AppButton from "../shared/AppButton";
 import AppText from "../shared/AppText";
-import useGetFlights from "@/hooks/useGetFlightsData";
-import AppActivityIndicator from "../shared/AppActivityIndicator";
 
 interface Props {
   // id: number;
@@ -25,11 +24,22 @@ interface Props {
 
 const HomeSearchBox = ({}: Props) => {
   const navigation = useNavigation<any>();
+  const isFocused = useIsFocused();
+
   const currentCity = useAppStore(useShallow((state) => state.currentCity));
   const destinationCity = useAppStore(
     useShallow((state) => state.destinationCity)
   );
-  const { getAllFlights, loading } = useGetFlights();
+  const setAppliedFilters = useAppStore(
+    useShallow((state) => state.setAppliedFilters)
+  );
+
+  const { getAllFlights } = useGetFlights();
+
+  //clear applied filters on component mount
+  useEffect(() => {
+    setAppliedFilters(undefined);
+  }, [isFocused]);
 
   const handleInputPress = (e: GestureResponderEvent, field: string) => {
     navigation?.navigate("city-search-screen", { field });
@@ -58,8 +68,6 @@ const HomeSearchBox = ({}: Props) => {
   };
   return (
     <View style={styles.cardContainer}>
-      {loading && <AppActivityIndicator />}
-
       <Pressable
         style={styles.topRow}
         onPress={(e) => handleInputPress(e, "current_city")}

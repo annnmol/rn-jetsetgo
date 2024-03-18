@@ -9,6 +9,7 @@ import { useShallow } from "zustand/react/shallow";
 import AuthNavigator from "@/routes/auth-navigator";
 import BottomTabsNavigator from "@/routes/bottom-tabs-navigator";
 import useAppStore from "@/store/app-store";
+import AppActivityIndicator from "@/components/shared/AppActivityIndicator";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -16,8 +17,9 @@ SplashScreen.preventAutoHideAsync();
 enableScreens(); // Enable the use of screens
 
 export default function App() {
+  const [isAppLoading, setIsAppLoading] = useState(true); //app ready status flag 
+  const loading = useAppStore(useShallow((state) => state.loading));  //data fetching status
   const authSession = useAppStore(useShallow((state) => state.authSession));
-  const [isAppLoading, setIsAppLoading] = useState(true);
 
   useEffect(() => {
     const unsub = useAppStore.persist.onFinishHydration((state) => {
@@ -43,6 +45,7 @@ export default function App() {
       <NavigationContainer>
         {authSession?.email ? <BottomTabsNavigator /> : <AuthNavigator />}
       </NavigationContainer>
+      {loading && <AppActivityIndicator />}
     </Fragment>
   );
 }
