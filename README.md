@@ -5,6 +5,9 @@ A Online Flight ticking booking app made using React native. The app is fully wr
 
 #### DOWNLOAD: https://drive.google.com/file/d/1X9fz-alt8z8rktaZSW-xIfAFZm0TqzoR/view?usp=sharing
 
+##### NOTE:
+if your are facing app not installed issue then go to play store 》 profile 》 manage apps 》 disable play protect 》 try installing again 》 turn on play protect again.
+
 ## SCREENSHOTS:  
 
 ## VIDEO: https://drive.google.com/file/d/1Kgp5DjCpX2wb54RD7sARcf3OsS__3MMJ/view?usp=drive_link
