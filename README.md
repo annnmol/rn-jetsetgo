@@ -3,11 +3,11 @@
 
 A Online Flight ticking booking app made using React native. The app is fully written in Typescript. 
 
-#### DOWNLOAD: 
+#### DOWNLOAD: https://drive.google.com/file/d/1X9fz-alt8z8rktaZSW-xIfAFZm0TqzoR/view?usp=sharing
 
-## SCREENSHOTS
+## SCREENSHOTS:  
 
-## VIDEO
+## VIDEO: https://drive.google.com/file/d/1Kgp5DjCpX2wb54RD7sARcf3OsS__3MMJ/view?usp=drive_link
 
 ## Screens:
 ### Auth
